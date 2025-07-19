@@ -1,11 +1,11 @@
+from dotenv import load_dotenv
+import os
 import streamlit as st
-from openai import OpenAI
+import openai
 
-# Your real API key goes here
-api_key = import os
-openai.api_key = os.getenv("OPENAI_API_KEY")
- 
-client = OpenAI(api_key=api_key)
+# Load API key from .env
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")  # ✅ Only one line needed here
 
 # Streamlit UI
 st.set_page_config(page_title="QuantAI Nexus", layout="centered")
@@ -18,8 +18,8 @@ prompt = st.text_input("You:", "")
 # If there's a prompt, generate response
 if prompt:
     with st.spinner("Thinking..."):
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",  # Use "gpt-3.5-turbo" if you're on free plan
+        response = openai.ChatCompletion.create(  # ✅ Fix this line
+            model="gpt-3.5-turbo",  # ✅ Use the correct model
             messages=[
                 {"role": "user", "content": prompt}
             ]
