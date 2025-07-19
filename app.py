@@ -2,6 +2,12 @@ from dotenv import load_dotenv
 import os
 import streamlit as st
 from openai import OpenAI
+import streamlit.components.v1 as components  # ✅ Add this for custom HTML
+
+# ✅ Google Search Console Verification Meta Tag
+components.html("""
+    <meta name="google-site-verification" content="google7f3fdfa0a825aea8" />
+""", height=0)
 
 # Load environment variables
 load_dotenv()
