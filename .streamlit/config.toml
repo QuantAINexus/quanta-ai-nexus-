@@ -6,10 +6,10 @@ textColor = "#000000"
 font = "sans serif"
 
 [server]
-enableXsrfProtection = false
+headless = true
 enableCORS = false
+port = 8501
 
-[client]
-showSidebarNavigation = true
-toolbarMode = "minimal"
-logo = "logo.png"
+[app]
+title = "QuantAI Nexus"
+icon = "logo.png"
