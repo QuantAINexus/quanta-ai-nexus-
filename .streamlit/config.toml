@@ -1,15 +1,15 @@
 [theme]
-primaryColor = "#4CAF50"
+primaryColor = "#00FF00"
 backgroundColor = "#FFFFFF"
 secondaryBackgroundColor = "#F0F2F6"
 textColor = "#000000"
 font = "sans serif"
 
 [server]
-headless = true
 enableCORS = false
-port = 8501
 
-[app]
-title = "QuantAI Nexus"
-icon = "logo.png"
+[general]
+email = "your-email@example.com"
+
+[branding]
+logo = "logo.png"
