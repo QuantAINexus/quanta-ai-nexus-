@@ -7,31 +7,56 @@ from openai import OpenAI
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
-# 🔽 Google site verification tag
-st.markdown(
-    '<meta name="google-site-verification" content="W8nigqjxcwnZcup1TKclYmcfwYcySWf-DzXpJ4iqh04" />',
-    unsafe_allow_html=True
-)
-
 # Initialize OpenAI client
 client = OpenAI(api_key=api_key)
 
-# Streamlit UI setup
-st.set_page_config(page_title="QuantAI Nexus", layout="centered")
-st.title("🤖 Welcome to QuantAI Nexus")
-st.write("Talk to your own AI assistant!")
+# Streamlit page setup
+st.set_page_config(page_title="QuantAI Nexus", layout="wide")
 
-# Input prompt
+# Custom CSS for better styling
+st.markdown("""
+    <style>
+        .main {
+            background-color: #f5f7fa;
+            padding: 2rem;
+        }
+        h1 {
+            color: #2c3e50;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #ecf0f1;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Logo and heading
+col1, col2 = st.columns([1, 6])
+with col1:
+    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png", width=60)  # replace with your logo
+with col2:
+    st.title("🤖 QuantAI Nexus")
+    st.write("Your Personal AI Assistant")
+
+# Input area
 prompt = st.text_input("You:", "")
 
-# Generate response if prompt is entered
+# Generate response
 if prompt:
     with st.spinner("Thinking..."):
         chat_response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
+            messages=[{"role": "user", "content": prompt}]
         )
         reply = chat_response.choices[0].message.content
         st.markdown(f"**AI:** {reply}")
+
+# Footer
+st.markdown('<div class="footer">© 2025 QuantAI Nexus | Built with ❤️ using Streamlit & OpenAI</div>', unsafe_allow_html=True)
