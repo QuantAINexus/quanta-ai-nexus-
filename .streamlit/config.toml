@@ -16,4 +16,4 @@ showErrorDetails = true
 
 [general]
 # Your logo must match this filename
-logo = "logo.png"
+#logo = "logo.png"
